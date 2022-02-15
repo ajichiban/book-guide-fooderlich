@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fooderlich/models/models.dart';
 
 class Card1 extends StatelessWidget {
-  const Card1({Key? key}) : super(key: key);
-  // 1
-  final String category = 'Editor\'s Choice';
-  final String title = 'The Art of Dough';
-  final String description = 'Learn to make the perfect bread.';
-  final String chef = 'Ray Wenderlich';
+  const Card1({Key? key, required this.recipe}) : super(key: key);
+  final ExploreRecipe recipe;
+  // final String category = 'Editor\'s Choice';
+  // final String title = 'The Art of Dough';
+  // final String description = 'Learn to make the perfect bread.';
+  // final String chef = 'Ray Wenderlich';
   // 2
   @override
   Widget build(BuildContext context) {
@@ -24,18 +25,18 @@ class Card1 extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Text(category, style: Theme.of(context).textTheme.bodyText1),
+            Text('${recipe.subtitle}', style: Theme.of(context).textTheme.bodyText1),
             Positioned(
-              child: Text(title, style: Theme.of(context).textTheme.headline5),
+              child: Text('${recipe.title}', style: Theme.of(context).textTheme.headline5),
               top: 20,
             ),
             Positioned(
-              child: Text(description, style: Theme.of(context).textTheme.bodyText1),
+              child: Text('${recipe.message}', style: Theme.of(context).textTheme.bodyText1),
               bottom: 30,
               right: 0,
             ),
             Positioned(
-              child: Text(chef, style: Theme.of(context).textTheme.bodyText1),
+              child: Text('${recipe.authorName}', style: Theme.of(context).textTheme.bodyText1),
               bottom: 10,
               right: 0,  
             ),
@@ -45,3 +46,4 @@ class Card1 extends StatelessWidget {
     );
   }
 }
+// 
