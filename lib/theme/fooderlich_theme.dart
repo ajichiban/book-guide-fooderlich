@@ -31,10 +31,13 @@ class FooderlichTheme {
   );
   // 3
   static ThemeData light() {
+
+    final ThemeData theme = ThemeData();
+
     return ThemeData(
       brightness: Brightness.light,
       primaryColor: Colors.white,
-      accentColor: Colors.black,
+      colorScheme: theme.colorScheme.copyWith(secondary: Colors.grey[900]) ,
       textSelectionTheme:
           const TextSelectionThemeData(selectionColor: Colors.green),
       textTheme: lightTextTheme,
@@ -43,10 +46,13 @@ class FooderlichTheme {
 
   // 4
   static ThemeData dark() {
+    final ThemeData theme = ThemeData();
+
     return ThemeData(
       brightness: Brightness.dark,
+      colorScheme: theme.colorScheme.copyWith(secondary: Colors.green[600], primary: Colors.grey[900]) ,
       primaryColor: Colors.grey[900],
-      accentColor: Colors.green[600],
+      // accentColor: Colors.green[600],
       textTheme: darkTextTheme,
     );
   }
