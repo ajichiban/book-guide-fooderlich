@@ -1,11 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:fooderlich/models/fooderlich_pages.dart';
 import 'package:fooderlich/models/grocery_item.dart';
 import 'package:fooderlich/widgets/grocery_tile.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 class GroceryItemScreen extends StatefulWidget {
+
+  static MaterialPage page({
+    GroceryItem? item,
+    int? index,
+    Function(GroceryItem)? onCreate,
+    Function(GroceryItem)? onUpdate,
+  }){
+    return MaterialPage(
+      name: FooderlichPages.groceryItemDetails,
+      key: ValueKey(FooderlichPages.groceryItemDetails),
+      child: GroceryItemScreen(
+        orinalItem: item,
+        onCreate: onCreate,
+        onUpdate: onUpdate,
+      )
+    );
+  }
+
   final Function(GroceryItem)? onCreate;
   final Function(GroceryItem)? onUpdate;
 

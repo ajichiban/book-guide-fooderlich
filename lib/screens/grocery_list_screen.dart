@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooderlich/models/grocery_manager.dart';
 import 'package:fooderlich/screens/grocery_item_screen.dart';
 import 'package:fooderlich/widgets/grocery_tile.dart';
+import 'package:provider/provider.dart';
 
 class GroceryListScreen extends StatelessWidget {
   final GroceryManager manager;
@@ -48,18 +49,7 @@ class GroceryListScreen extends StatelessWidget {
           
               onTap: (){
                 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => GroceryItemScreen(
-                      orinalItem: item,
-                      onUpdate: (item){
-                        manager.updateItem(item, index);
-                        Navigator.pop(context);
-                      },
-                    )
-                  )
-                  );
+                manager.groceryItemTapped(index);
                 
               },
             ),
