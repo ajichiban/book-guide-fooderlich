@@ -12,7 +12,12 @@ class GroceryManager extends ChangeNotifier {
 
   get selectedIndex => _selectedIndex;
 
-  get selectedGroceryItem => _groceryItems[_selectedIndex!];
+  get selectedGroceryItem{
+    if (_selectedIndex == null) {
+      return null ;
+    }
+    return _groceryItems[_selectedIndex!];
+  }
 
   bool get isCreatingNewItem => _createNewItem;
 
@@ -22,6 +27,13 @@ class GroceryManager extends ChangeNotifier {
   }
 
   void groceryItemTapped(int? index){
+    _selectedIndex = index;
+    _createNewItem = false;
+    notifyListeners();
+  }
+
+  void setSelectedGroceryItem(String id) {
+    final index = groceryItems.indexWhere((element) => element.id == id);
     _selectedIndex = index;
     _createNewItem = false;
     notifyListeners();
